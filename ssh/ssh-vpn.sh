@@ -20,7 +20,7 @@ commonname=none
 email=adamspx17@gmail.com
 
 # simple password minimal
-curl -sS https://raw.githubusercontent.com/huutvpn/jp/main/ssh/password | jpssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
+curl -sS https://raw.githubusercontent.com/huutvpn/jp/main/ssh/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -193,15 +193,15 @@ connect = 127.0.0.1:109
 accept = 2096
 connect = 700
 
-[jpvpn]
+[openvpn]
 accept = 442
 connect = 127.0.0.1:1194
 
 END
 
 # make a certificate
-jpssl genrsa -out key.pem 2048
-jpssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
+openssl genrsa -out key.pem 2048
+openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
 cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 
@@ -290,7 +290,7 @@ echo -e "$yell[SERVICE]$NC Restart All service SSH & OVPN"
 /etc/init.d/nginx restart >/dev/null 2>&1
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting nginx"
-/etc/init.d/jpvpn restart >/dev/null 2>&1
+/etc/init.d/openvpn restart >/dev/null 2>&1
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting cron "
 /etc/init.d/ssh restart >/dev/null 2>&1
