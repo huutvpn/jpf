@@ -1,10 +1,3 @@
-ENV_FILE="/etc/zipvpn/.env"
-if [ ! -f "$ENV_FILE" ]; then
-  echo "Token belum diset. Jalankan install.sh"
-  exit 1
-fi
-export $(grep -v '^#' $ENV_FILE | xargs)
-
 #!/bin/bash
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
@@ -16,11 +9,11 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 
 clear
                hariini=`date +%d-%m-%Y`
-               echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-               echo -e "\E[0;41;36m               AUTO DELETE                \E[0m"
-               echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+               echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+               echo -e "\E[40;1;37m               AUTO DELETE                \E[0m"
+               echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
                echo "Thank you for removing the EXPIRED USERS"
-               echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+               echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
                cat /etc/shadow | cut -d: -f1,8 | sed /:$/d > /tmp/expirelist.txt
                totalaccounts=`cat /tmp/expirelist.txt | wc -l`
                for((i=1; i<=$totalaccounts; i++ ))
@@ -52,8 +45,8 @@ clear
                fi
                done
                echo " "
-               echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+               echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
                
-               read -n 1 -s -r -p "PRESS [ ENTER ] KELUAR MENU"
+               read -n 1 -s -r -p "Press any key to back on menu"
                menu
         
