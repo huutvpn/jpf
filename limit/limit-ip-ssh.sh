@@ -1,3 +1,10 @@
+ENV_FILE="/etc/zipvpn/.env"
+if [ ! -f "$ENV_FILE" ]; then
+  echo "Token belum diset. Jalankan install.sh"
+  exit 1
+fi
+export $(grep -v '^#' $ENV_FILE | xargs)
+
 #!/bin/bash
 mulog=$(mesinssh)
 date=$(date)
@@ -16,7 +23,7 @@ fi
 sleep 0.1
 done
 if [[ $nais -gt 1 ]]; then
-telegram-send --pre "$(log-ssh)" > /dev/null & 
+huutvpn
 else
 echo > /dev/null
 fi

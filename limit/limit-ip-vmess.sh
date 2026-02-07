@@ -1,3 +1,10 @@
+ENV_FILE="/etc/zipvpn/.env"
+if [ ! -f "$ENV_FILE" ]; then
+  echo "Token belum diset. Jalankan install.sh"
+  exit 1
+fi
+export $(grep -v '^#' $ENV_FILE | xargs)
+
 echo -n > /var/log/xray/access.log
 sleep 4
 data=( `ls /etc/cobek/limit/vmess/ip`);
@@ -15,7 +22,7 @@ fi
 sleep 0.1
 done
 if [[ $nais -gt 1 ]]; then
-telegram-send --pre "$(log-vmess)" > /dev/null &
+huutvpn
 systemctl restart vmess-ws-orbit
 systemctl restart vmess-ws-orbit1
 systemctl restart vmess-ws
