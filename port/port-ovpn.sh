@@ -1,10 +1,3 @@
-ENV_FILE="/etc/zipvpn/.env"
-if [ ! -f "$ENV_FILE" ]; then
-  echo "Token belum diset. Jalankan install.sh"
-  exit 1
-fi
-export $(grep -v '^#' $ENV_FILE | xargs)
-
 #!/bin/bash
 red='\e[1;31m'
 green='\e[0;32m'
@@ -14,8 +7,8 @@ echo "Checking VPS"
 
 clear
 MYIP=$(wget -qO- ifconfig.me/ip);
-ovpn="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
-ovpn2="$(netstat -nlpu | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
+ovpn="$(netstat -nlpt | grep -i jpvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
+ovpn2="$(netstat -nlpu | grep -i jpvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 echo -e "======================================"
 echo -e "Name : Change Port Openvpn"
 echo -e "======================================"
@@ -35,10 +28,10 @@ exit 0
 fi
 cek=$(netstat -nutlp | grep -w $vpn)
 if [[ -z $cek ]]; then
-rm -f /etc/openvpn/server/server-tcp-$ovpn.conf
-rm -f /etc/openvpn/client-tcp-$ovpn.ovpn
+rm -f /etc/jpvpn/server/server-tcp-$ovpn.conf
+rm -f /etc/jpvpn/client-tcp-$ovpn.ovpn
 rm -f /usr/share/nginx/html/client-tcp-$ovpn.ovpn
-cat > /etc/openvpn/server/server-tcp-$vpn.conf<<END
+cat > /etc/jpvpn/server/server-tcp-$vpn.conf<<END
 port $vpn
 proto tcp
 dev tun
@@ -46,7 +39,7 @@ ca ca.crt
 cert server.crt
 key server.key
 dh dh2048.pem
-plugin /usr/lib/openvpn/openvpn-plugin-auth-pam.so login
+plugin /usr/lib/jpvpn/jpvpn-plugin-auth-pam.so login
 verify-client-cert none
 username-as-common-name
 server 10.6.0.0 255.255.255.0
@@ -58,10 +51,10 @@ keepalive 5 30
 comp-lzo
 persist-key
 persist-tun
-status openvpn-tcp.log
+status jpvpn-tcp.log
 verb 3
 END
-cat > /etc/openvpn/client-tcp-$vpn.ovpn <<-END
+cat > /etc/jpvpn/client-tcp-$vpn.ovpn <<-END
 client
 dev tun
 proto tcp
@@ -75,12 +68,12 @@ auth-user-pass
 comp-lzo
 verb 3
 END
-echo '<ca>' >> /etc/openvpn/client-tcp-$vpn.ovpn
-cat /etc/openvpn/server/ca.crt >> /etc/openvpn/client-tcp-$vpn.ovpn
-echo '</ca>' >> /etc/openvpn/client-tcp-$vpn.ovpn
-cp /etc/openvpn/client-tcp-$vpn.ovpn /usr/share/nginx/html/client-tcp-$vpn.ovpn
-systemctl disable --now openvpn-server@server-tcp-$ovpn > /dev/null
-systemctl enable --now openvpn-server@server-tcp-$vpn > /dev/null
+echo '<ca>' >> /etc/jpvpn/client-tcp-$vpn.ovpn
+cat /etc/jpvpn/server/ca.crt >> /etc/jpvpn/client-tcp-$vpn.ovpn
+echo '</ca>' >> /etc/jpvpn/client-tcp-$vpn.ovpn
+cp /etc/jpvpn/client-tcp-$vpn.ovpn /usr/share/nginx/html/client-tcp-$vpn.ovpn
+systemctl disable --now jpvpn-server@server-tcp-$ovpn > /dev/null
+systemctl enable --now jpvpn-server@server-tcp-$vpn > /dev/null
 sed -i "s/   - OpenVPN                 : TCP $ovpn, UDP $ovpn2/   - OpenVPN                 : TCP $vpn, UDP $ovpn2/g" /root/log-install.txt
 sed -i "s/$ovpn/$vpn/g" /etc/stunnel/stunnel.conf
 echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
@@ -96,10 +89,10 @@ exit 0
 fi
 cek=$(netstat -nutlp | grep -w $vpn)
 if [[ -z $cek ]]; then
-rm -f /etc/openvpn/server/server-udp-$ovpn2.conf
-rm -f /etc/openvpn/client-udp-$ovpn2.ovpn
+rm -f /etc/jpvpn/server/server-udp-$ovpn2.conf
+rm -f /etc/jpvpn/client-udp-$ovpn2.ovpn
 rm -f /usr/share/nginx/html/client-tcp-$ovpn2.ovpn
-cat > /etc/openvpn/server/server-udp-$vpn.conf<<END
+cat > /etc/jpvpn/server/server-udp-$vpn.conf<<END
 port $vpn
 proto udp
 dev tun
@@ -107,7 +100,7 @@ ca ca.crt
 cert server.crt
 key server.key
 dh dh2048.pem
-plugin /usr/lib/openvpn/openvpn-plugin-auth-pam.so login
+plugin /usr/lib/jpvpn/jpvpn-plugin-auth-pam.so login
 verify-client-cert none
 username-as-common-name
 server 10.7.0.0 255.255.255.0
@@ -119,11 +112,11 @@ keepalive 5 30
 comp-lzo
 persist-key
 persist-tun
-status openvpn-udp.log
+status jpvpn-udp.log
 verb 3
 explicit-exit-notify
 END
-cat > /etc/openvpn/client-udp-$vpn.ovpn <<-END
+cat > /etc/jpvpn/client-udp-$vpn.ovpn <<-END
 client
 dev tun
 proto udp
@@ -137,12 +130,12 @@ auth-user-pass
 comp-lzo
 verb 3
 END
-echo '<ca>' >> /etc/openvpn/client-udp-$vpn.ovpn
-cat /etc/openvpn/server/ca.crt >> /etc/openvpn/client-udp-$vpn.ovpn
-echo '</ca>' >> /etc/openvpn/client-udp-$vpn.ovpn
-cp /etc/openvpn/client-udp-$vpn.ovpn /usr/share/nginx/html/client-udp-$vpn.ovpn
-systemctl disable --now openvpn-server@server-udp-$ovpn2 > /dev/null
-systemctl enable --now openvpn-server@server-udp-$vpn > /dev/null
+echo '<ca>' >> /etc/jpvpn/client-udp-$vpn.ovpn
+cat /etc/jpvpn/server/ca.crt >> /etc/jpvpn/client-udp-$vpn.ovpn
+echo '</ca>' >> /etc/jpvpn/client-udp-$vpn.ovpn
+cp /etc/jpvpn/client-udp-$vpn.ovpn /usr/share/nginx/html/client-udp-$vpn.ovpn
+systemctl disable --now jpvpn-server@server-udp-$ovpn2 > /dev/null
+systemctl enable --now jpvpn-server@server-udp-$vpn > /dev/null
 sed -i "s/   - OpenVPN                 : TCP $ovpn, UDP $ovpn2/   - OpenVPN                 : TCP $ovpn, UDP $vpn/g" /root/log-install.txt
 echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
 else
