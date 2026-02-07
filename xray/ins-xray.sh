@@ -1,10 +1,3 @@
-ENV_FILE="/etc/zipvpn/.env"
-if [ ! -f "$ENV_FILE" ]; then
-  echo "Token belum diset. Jalankan install.sh"
-  exit 1
-fi
-export $(grep -v '^#' $ENV_FILE | xargs)
-
 #!/bin/bash
 echo -e "
 "
@@ -39,7 +32,7 @@ apt install socat cron bash-completion ntpdate -y
 ntpdate pool.ntp.org
 apt -y install chrony
 apt install zip -y
-apt install curl pwgen openssl netcat cron -y
+apt install curl pwgen jpssl netcat cron -y
 
 
 # install xray

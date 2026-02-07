@@ -1,10 +1,3 @@
-ENV_FILE="/etc/zipvpn/.env"
-if [ ! -f "$ENV_FILE" ]; then
-  echo "Token belum diset. Jalankan install.sh"
-  exit 1
-fi
-export $(grep -v '^#' $ENV_FILE | xargs)
-
 domain=$(cat /etc/xray/domain)
 tr="$(cat ~/log-install.txt | grep -w "Trojan WS" | cut -d: -f2|sed 's/ //g')"
 user=trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
