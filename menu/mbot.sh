@@ -1,3 +1,10 @@
+ENV_FILE="/etc/zipvpn/.env"
+if [ ! -f "$ENV_FILE" ]; then
+  echo "Token belum diset. Jalankan install.sh"
+  exit 1
+fi
+export $(grep -v '^#' $ENV_FILE | xargs)
+
 #!/bin/bash
 # COLOR VALIDATION
 clear
@@ -20,7 +27,7 @@ USRSC=$(curl -sS https://https://raw.githubusercontent.com/huutvpn/instalasi/mai
 setup_bot() {
     switch=$(grep -i "switch" /root/.bckupbot | awk '{print $2}')
     echo "Pergi ke @BotFather dan type /newbot untuk membuat bot baru"
-    echo "Pergi ke @MissRose_bot dan type /id untuk mendapatkan ID telegram"
+    echo "Pergi ke @MissRose_bot dan type /id untuk mendapatkan ID huutvpn
     echo ""
     read -p "Bot Token : " getToken
     read -p "Admin ID  : " adminID
@@ -68,21 +75,21 @@ botBackup() {
 
     echo -e "[ ${green}INFO${NC} ] • Sending Via Bot... "
     curl -Ss --request POST \
-        --url "https://api.telegram.org/bot${bottoken}/sendDocument?chat_id=${adminid}&caption=Here Your Backup Today : ${dateToday}" \
+        --url "https://api.huutvpn
         --header 'content-type: multipart/form-data' \
         --form document=@"/root/$IP-$USRSC-$dateToday.zip" >/root/t1
 
     fileId=$(grep -o '"file_id":"[^"]*' /root/t1 | grep -o '[^"]*$')
 
     curl -Ss --request GET \
-        --url "https://api.telegram.org/bot${bottoken}/getfile?file_id=${fileId}" >/root/t1
+        --url "https://api.huutvpn
 
     filePath=$(grep -o '"file_path":"[^"]'* /root/t1 | grep -o '[^"]*$')
 
     curl -Ss --request GET \
-        --url "https://api.telegram.org/bot${bottoken}/sendMessage?chat_id=${adminid}&text=File ID   : <code>${fileId}</code>&parse_mode=html" &>/dev/null
+        --url "https://api.huutvpn
     curl -Ss --request GET \
-        --url "https://api.telegram.org/bot${bottoken}/sendMessage?chat_id=${adminid}&text=File Path : <code>${filePath}</code>&parse_mode=html" &>/dev/null
+        --url "https://api.huutvpn
 
     echo -e "[ ${green}INFO${NC} ] • Completed... "
 
@@ -98,7 +105,7 @@ restoreBot() {
     read -p "File ID Backup   : " fileId
     read -p "File PATH Backup : " filePath
     curl -Ss --request GET \
-        --url "https://api.telegram.org/file/bot${bottoken}/${filePath}?file_id=${fileId}" >backup.zip
+        --url "https://api.huutvpn
 
     echo -e "[ ${green}INFO${NC} ] • Restore Data..."
 	read -rp "Password File: "  InputPass
@@ -161,15 +168,15 @@ botbckpBot_menu() {
         sts="\033[1;31m[Off]\033[0m"
     fi
 	echo -e " ${Blue}╭═══════════════════════════════════════════════════════╮${NC}"
-	echo -e " ${Blue}│$NC\033[41m               Telegram Bot (AutoBackup)               \E[0m"
+	echo -e " ${Blue}│$NC\033[41m               huutvpn
 	echo -e " ${Blue}╰═══════════════════════════════════════════════════════╯${NC}"
     echo -e " ${Blue}╭═══════════════════════════════════════════════════════╮${NC}"
     echo -e " ${Blue}│$NC ${green} VPS Data Backup By Koreke"
     echo -e " ${Blue}│$NC"
     echo -e " ${Blue}│$NC ${green} Status AutoBackup : $sts"
-    echo -e " ${Blue}│$NC [${green}1${NC}] Setup Bot Telegram \e[0m"
+    echo -e " ${Blue}│$NC [${green}1${NC}] Setup Bot huutvpn
     echo -e " ${Blue}│$NC [${green}2${NC}] Auto Backup Status \e[0m"
-    echo -e " ${Blue}│$NC [${green}3${NC}] Backup VPS (Telegram Bot) \e[0m"
+    echo -e " ${Blue}│$NC [${green}3${NC}] Backup VPS (huutvpn
     echo -e " ${Blue}│$NC [${green}4${NC}] Restore Data \e[0m"
     echo -e " ${Blue}│$NC [${green}5${NC}] Back To Main Menu \e[0m"
     echo -e " ${Blue}╰═══════════════════════════════════════════════════════╯${NC}"
