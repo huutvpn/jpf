@@ -45,11 +45,11 @@ export RED_BG='\e[41m'
 # // Exporting IP Address
 export IP=$( curl -s https://ipinfo.io/ip/ )
 # // OpenSSH
-jpssh=$( systemctl status ssh | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
-if [[ $jpssh == "running" ]]; then
-    status_jpssh="${GREEN}Running${NC} ( No Eror )"
+openssh=$( systemctl status ssh | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $openssh == "running" ]]; then
+    status_openssh="${GREEN}Running${NC} ( No Eror )"
 else
-    status_jpssh="${RED}No Running${NC} ( Eror )"
+    status_openssh="${RED}No Running${NC} ( Eror )"
 fi
 
 # // Stunnel5
@@ -142,7 +142,7 @@ echo -e "Current Time        = $( date -d "0 days" +"%d-%m-%Y | %X" )"
 echo ""
 
 echo -e "${RED_BG}                     Service Information                  ${NC}"
-echo -e "OpenSSH             = $status_jpssh"
+echo -e "OpenSSH             = $status_openssh"
 echo -e "Dropbear            = $status_dropbear"
 echo -e "Stunnel5            = $status_stunnel5"
 echo -e "Squid               = $status_squid"
