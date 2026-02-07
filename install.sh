@@ -1,20 +1,24 @@
 #!/bin/bash
 clear
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo " HUUTVPN JP INSTALLER"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-# update menu
+TOKEN_FILE="/etc/huutvpn/token"
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━"
+echo " HUUTVPN JP INSTALLER"
+echo "━━━━━━━━━━━━━━━━━━━━━━━"
+
+# set token
+if [ ! -f $TOKEN_FILE ]; then
+    read -p "Masukkan Token: " TOKEN
+    mkdir -p /etc/huutvpn
+    echo "$TOKEN" > $TOKEN_FILE
+    chmod 600 $TOKEN_FILE
+fi
+
+echo "Token tersimpan ✅"
+
+# install menu updater
 wget -q https://raw.githubusercontent.com/huutvpn/jp/main/updatemenu.sh -O /usr/bin/updatemenu
 chmod +x /usr/bin/updatemenu
 
-# install ssh
-bash ssh/ssh.sh
-
-# install ssh ws
-bash sshws/sshws.sh
-
-# install xray
-bash xray/xray.sh
-
-echo "INSTALL SELESAI ✅"
+echo "Install selesai, jalankan: updatemenu"
