@@ -1,25 +1,20 @@
 #!/bin/bash
 clear
-cd "$(dirname "$0")"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo " HUUTVPN JP INSTALLER"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-echo "🚀 ZIPVPN_SECURE INSTALLER"
-sleep 1
+# update menu
+wget -q https://raw.githubusercontent.com/huutvpn/jp/main/updatemenu.sh -O /usr/bin/updatemenu
+chmod +x /usr/bin/updatemenu
 
-chmod +x *.sh
-chmod +x */*.sh
+# install ssh
+bash ssh/ssh.sh
 
-dos2unix *.sh */*.sh >/dev/null 2>&1
+# install ssh ws
+bash sshws/sshws.sh
 
-systemctl daemon-reexec 2>/dev/null
-systemctl daemon-reload 2>/dev/null
+# install xray
+bash xray/xray.sh
 
-for svc in ssh dropbear xray sshws ws-epro; do
-    systemctl enable $svc 2>/dev/null
-    systemctl restart $svc 2>/dev/null
-done
-
-if [ -f menu/menu.sh ]; then
-    bash menu/menu.sh
-else
-    echo "❌ menu.sh tidak ditemukan"
-fi
+echo "INSTALL SELESAI ✅"
