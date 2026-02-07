@@ -1,10 +1,3 @@
-ENV_FILE="/etc/zipvpn/.env"
-if [ ! -f "$ENV_FILE" ]; then
-  echo "Token belum diset. Jalankan install.sh"
-  exit 1
-fi
-export $(grep -v '^#' $ENV_FILE | xargs)
-
 #!/bin/bash
 # ==========================================
 # Color
@@ -21,7 +14,7 @@ LIGHT='\033[0;37m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 # Link Hosting Kalian
-akbarvpn="raw.githubusercontent.com/huutvpn/instalasi/main/backup"
+akbarvpn="raw.githubusercontent.com/huutvpn/jp/main/backup"
 
 apt install rclone -y
 printf "q\n" | rclone config
@@ -50,12 +43,12 @@ logfile ~/.msmtp.log
 EOF
 chown -R www-data:www-data /etc/msmtprc
 cd /usr/bin
-wget -O autobackup "https://raw.githubusercontent.com/huutvpn/instalasi/main/backup/autobackup.sh"
-wget -O backup "https://raw.githubusercontent.com/huutvpn/instalasi/main/backup/backup.sh"
-wget -O restore "https://raw.githubusercontent.com/huutvpn/instalasi/main/backup/restore.sh"
-wget -O strt "https://raw.githubusercontent.com/huutvpn/instalasi/main/backup/strt.sh"
-wget -O limitspeed "https://raw.githubusercontent.com/huutvpn/instalasi/main/backup/limitspeed.sh"
-wget -O menu-backup "https://raw.githubusercontent.com/huutvpn/instalasi/main/backup/menu-backup.sh"
+wget -O autobackup "https://raw.githubusercontent.com/huutvpn/jp/main/backup/autobackup.sh"
+wget -O backup "https://raw.githubusercontent.com/huutvpn/jp/main/backup/backup.sh"
+wget -O restore "https://raw.githubusercontent.com/huutvpn/jp/main/backup/restore.sh"
+wget -O strt "https://raw.githubusercontent.com/huutvpn/jp/main/backup/strt.sh"
+wget -O limitspeed "https://raw.githubusercontent.com/huutvpn/jp/main/backup/limitspeed.sh"
+wget -O menu-backup "https://raw.githubusercontent.com/huutvpn/jp/main/backup/menu-backup.sh"
 chmod +x autobackup
 chmod +x backup
 chmod +x restore
