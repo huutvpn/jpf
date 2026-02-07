@@ -32,7 +32,7 @@ apt install socat cron bash-completion ntpdate -y
 ntpdate pool.ntp.org
 apt -y install chrony
 apt install zip -y
-apt install curl pwgen jpssl netcat cron -y
+apt install curl pwgen openssl netcat cron -y
 
 
 # install xray
