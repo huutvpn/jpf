@@ -190,7 +190,7 @@ echo -e "┌──────────────────────�
 echo -e " \E[41;1;39m           >>> Install Tools <<<        \E[0m$NC"
 echo -e "└─────────────────────────────────────────┘"
 sleep 5
-wget -q https://raw.githubusercontent.com/huutvpn/instalasi/main/tools.sh && chmod +x tools.sh && ./tools.sh
+wget -q https://raw.githubusercontent.com/huutvpn/jp/main/tools.sh && chmod +x tools.sh && ./tools.sh
 rm tools.sh
 #install ssh-vpn
 echo -e "┌─────────────────────────────────────────┐"
@@ -198,15 +198,15 @@ echo -e " \E[41;1;39m          >>> Install SSH WS <<<        \E[0m$NC"
 echo -e "└─────────────────────────────────────────┘"
 sleep 5
 clear
-wget https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget https://raw.githubusercontent.com/huutvpn/jp/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 #install ins-xray
 echo -e "┌─────────────────────────────────────────┐"
 echo -e " \E[41;1;39m            >>> Install Xray <<<         \E[0m$NC"
 echo -e "└─────────────────────────────────────────┘"
 sleep 5
 clear
-wget https://raw.githubusercontent.com/huutvpn/instalasi/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
-wget https://raw.githubusercontent.com/huutvpn/instalasi/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+wget https://raw.githubusercontent.com/huutvpn/jp/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget https://raw.githubusercontent.com/huutvpn/jp/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
 #install br
 echo -e "┌─────────────────────────────────────────┐"
@@ -214,76 +214,76 @@ echo -e " \E[41;1;39m            >>> Install BR <<<           \E[0m$NC"
 echo -e "└─────────────────────────────────────────┘"
 sleep 5 
 clear 
-wget https://raw.githubusercontent.com/huutvpn/instalasi/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://raw.githubusercontent.com/huutvpn/jp/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 clear
 # // Download Data
 echo -e "${GREEN}Download Data${NC}"
-wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/clearlog.sh"
-wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/menu.sh"
-wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/menu-vmess.sh"
-wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/menu-vless.sh"
-wget -q -O /usr/bin/running "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/running.sh"
-wget -q -O /usr/bin/clearcache "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/clearcache.sh"
-wget -q -O /usr/bin/menu-trgo "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/menu-trgo.sh"
-wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/menu-trojan.sh"
-wget -q -O /usr/bin/menu-trial "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/menu-trial.sh"
-wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/menu-ssh.sh"
-wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/huutvpn/instalasi/main/backup/menu-backup.sh"
-wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/usernew.sh"
-wget -q -O /usr/bin/trial "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/trial.sh"
-wget -q -O /usr/bin/renew "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/renew.sh"
-wget -q -O /usr/bin/hapus "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/hapus.sh"
-wget -q -O /usr/bin/cek "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/cek.sh"
-wget -q -O /usr/bin/member "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/member.sh"
-wget -q -O /usr/bin/delete "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/delete.sh"
-wget -q -O /usr/bin/autokill "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/autokill.sh"
-wget -q -O /usr/bin/ceklim "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/ceklim.sh"
-wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/tendang.sh"
-wget -q -O /usr/bin/user-lock "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/user-lock.sh"
-wget -q -O /usr/bin/user-unlock "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/user-unlock.sh"
-wget -q -O /usr/bin/menu-set "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/menu-set.sh"
-wget -q -O /usr/bin/menu-domain "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/menu-domain.sh"
-wget -q -O /usr/bin/add-host "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/add-host.sh"
-wget -q -O /usr/bin/port-change "https://raw.githubusercontent.com/huutvpn/instalasi/main/port/port-change.sh"
-wget -q -O /usr/bin/certv2ray "https://raw.githubusercontent.com/huutvpn/instalasi/main/xray/certv2ray.sh"
-wget -q -O /usr/bin/menu-webmin "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/menu-webmin.sh"
-wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/speedtest_cli.py"
-wget -q -O /usr/bin/about "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/about.sh"
-wget -q -O /usr/bin/auto-reboot "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/auto-reboot.sh"
-wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/restart.sh"
-wget -q -O /usr/bin/bw "https://raw.githubusercontent.com/huutvpn/instalasi/main/menu/bw.sh"
-wget -q -O /usr/bin/genssl "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/genssl.sh"
-wget -q -O /usr/bin/port-ssl "https://raw.githubusercontent.com/huutvpn/instalasi/main/port/port-ssl.sh"
-wget -q -O /usr/bin/port-ovpn "https://raw.githubusercontent.com/huutvpn/instalasi/main/port/port-ovpn.sh"
-wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/xp.sh"
-wget -q -O /usr/bin/acs-set "https://raw.githubusercontent.com/huutvpn/instalasi/main/acs-set.sh"
-wget -q -O /usr/bin/sshws "https://raw.githubusercontent.com/huutvpn/instalasi/main/ssh/sshws.sh"
-wget -q -O /usr/bin/updatemenu "https://raw.githubusercontent.com/huutvpn/instalasi/main/updatemenu.sh"
+wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/huutvpn/jp/main/menu/clearlog.sh"
+wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/huutvpn/jp/main/menu/menu.sh"
+wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/huutvpn/jp/main/menu/menu-vmess.sh"
+wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/huutvpn/jp/main/menu/menu-vless.sh"
+wget -q -O /usr/bin/running "https://raw.githubusercontent.com/huutvpn/jp/main/menu/running.sh"
+wget -q -O /usr/bin/clearcache "https://raw.githubusercontent.com/huutvpn/jp/main/menu/clearcache.sh"
+wget -q -O /usr/bin/menu-trgo "https://raw.githubusercontent.com/huutvpn/jp/main/menu/menu-trgo.sh"
+wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/huutvpn/jp/main/menu/menu-trojan.sh"
+wget -q -O /usr/bin/menu-trial "https://raw.githubusercontent.com/huutvpn/jp/main/menu/menu-trial.sh"
+wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/huutvpn/jp/main/menu/menu-ssh.sh"
+wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/huutvpn/jp/main/backup/menu-backup.sh"
+wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/usernew.sh"
+wget -q -O /usr/bin/trial "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/trial.sh"
+wget -q -O /usr/bin/renew "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/renew.sh"
+wget -q -O /usr/bin/hapus "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/hapus.sh"
+wget -q -O /usr/bin/cek "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/cek.sh"
+wget -q -O /usr/bin/member "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/member.sh"
+wget -q -O /usr/bin/delete "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/delete.sh"
+wget -q -O /usr/bin/autokill "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/autokill.sh"
+wget -q -O /usr/bin/ceklim "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/ceklim.sh"
+wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/tendang.sh"
+wget -q -O /usr/bin/user-lock "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/user-lock.sh"
+wget -q -O /usr/bin/user-unlock "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/user-unlock.sh"
+wget -q -O /usr/bin/menu-set "https://raw.githubusercontent.com/huutvpn/jp/main/menu/menu-set.sh"
+wget -q -O /usr/bin/menu-domain "https://raw.githubusercontent.com/huutvpn/jp/main/menu/menu-domain.sh"
+wget -q -O /usr/bin/add-host "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/add-host.sh"
+wget -q -O /usr/bin/port-change "https://raw.githubusercontent.com/huutvpn/jp/main/port/port-change.sh"
+wget -q -O /usr/bin/certv2ray "https://raw.githubusercontent.com/huutvpn/jp/main/xray/certv2ray.sh"
+wget -q -O /usr/bin/menu-webmin "https://raw.githubusercontent.com/huutvpn/jp/main/menu/menu-webmin.sh"
+wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/speedtest_cli.py"
+wget -q -O /usr/bin/about "https://raw.githubusercontent.com/huutvpn/jp/main/menu/about.sh"
+wget -q -O /usr/bin/auto-reboot "https://raw.githubusercontent.com/huutvpn/jp/main/menu/auto-reboot.sh"
+wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/huutvpn/jp/main/menu/restart.sh"
+wget -q -O /usr/bin/bw "https://raw.githubusercontent.com/huutvpn/jp/main/menu/bw.sh"
+wget -q -O /usr/bin/genssl "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/genssl.sh"
+wget -q -O /usr/bin/port-ssl "https://raw.githubusercontent.com/huutvpn/jp/main/port/port-ssl.sh"
+wget -q -O /usr/bin/port-ovpn "https://raw.githubusercontent.com/huutvpn/jp/main/port/port-ovpn.sh"
+wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/xp.sh"
+wget -q -O /usr/bin/acs-set "https://raw.githubusercontent.com/huutvpn/jp/main/acs-set.sh"
+wget -q -O /usr/bin/sshws "https://raw.githubusercontent.com/huutvpn/jp/main/ssh/sshws.sh"
+wget -q -O /usr/bin/updatemenu "https://raw.githubusercontent.com/huutvpn/jp/main/updatemenu.sh"
 cd /usr/sbin
-wget -q -O /usr/bin/mesinssh "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/mesinssh.sh"
-wget -q -O /usr/bin/cek-ssh "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/cek-ssh.sh"
+wget -q -O /usr/bin/mesinssh "https://raw.githubusercontent.com/huutvpn/jp/main/limit/mesinssh.sh"
+wget -q -O /usr/bin/cek-ssh "https://raw.githubusercontent.com/huutvpn/jp/main/limit/cek-ssh.sh"
 chmod +x *
 chmod +x /usr/sbin/*
 cd /usr/bin
-wget -q -O /usr/bin/loop "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/loop.sh"
-wget -q -O /usr/bin/matikan "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/matikan.sh"
-wget -q -O /usr/bin/limit "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/limit.sh"
-wget -q -O /usr/bin/limit-ip-ssh "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/limit-ip-ssh.sh"
-wget -q -O /usr/bin/limit-ip-trojan "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/limit-ip-trojan.sh"
-wget -q -O /usr/bin/limit-ip-vless "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/limit-ip-vless.sh"
-wget -q -O /usr/bin/limit-ip-vmess "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/limit-ip-vmess.sh"
-wget -q -O /usr/bin/limit-quota-trojan "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/limit-quota-trojan.sh"
-wget -q -O /usr/bin/limit-quota-vmess "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/limit-quota-vmess.sh"
-wget -q -O /usr/bin/limit-quota-vless "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/limit-quota-vless.sh"
-wget -q -O /usr/bin/quota "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/quota.sh"
-wget -q -O /usr/bin/quota-trojan-grpc "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/quota-trojan-grpc.sh"
-wget -q -O /usr/bin/quota-trojan-ws "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/quota-trojan-ws.sh"
-wget -q -O /usr/bin/quota-vmess-grpc "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/quota-vmess-grpc.sh"
-wget -q -O /usr/bin/quota-vmess-ws "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/quota-vmess-ws.sh"
-wget -q -O /usr/bin/quota-vless-ws "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/quota-vless-ws.sh"
-wget -q -O /usr/bin/quota-vless-grpc "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/quota-vless-grpc.sh"
-wget -q -O /usr/bin/quota-vmess-orbit "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/quota-vmess-ws-orbit.sh"
-wget -q -O /usr/bin/quota-vmess-orbit1 "https://raw.githubusercontent.com/huutvpn/instalasi/main/limit/quota-vmess-ws-orbit1.sh"
+wget -q -O /usr/bin/loop "https://raw.githubusercontent.com/huutvpn/jp/main/limit/loop.sh"
+wget -q -O /usr/bin/matikan "https://raw.githubusercontent.com/huutvpn/jp/main/limit/matikan.sh"
+wget -q -O /usr/bin/limit "https://raw.githubusercontent.com/huutvpn/jp/main/limit/limit.sh"
+wget -q -O /usr/bin/limit-ip-ssh "https://raw.githubusercontent.com/huutvpn/jp/main/limit/limit-ip-ssh.sh"
+wget -q -O /usr/bin/limit-ip-trojan "https://raw.githubusercontent.com/huutvpn/jp/main/limit/limit-ip-trojan.sh"
+wget -q -O /usr/bin/limit-ip-vless "https://raw.githubusercontent.com/huutvpn/jp/main/limit/limit-ip-vless.sh"
+wget -q -O /usr/bin/limit-ip-vmess "https://raw.githubusercontent.com/huutvpn/jp/main/limit/limit-ip-vmess.sh"
+wget -q -O /usr/bin/limit-quota-trojan "https://raw.githubusercontent.com/huutvpn/jp/main/limit/limit-quota-trojan.sh"
+wget -q -O /usr/bin/limit-quota-vmess "https://raw.githubusercontent.com/huutvpn/jp/main/limit/limit-quota-vmess.sh"
+wget -q -O /usr/bin/limit-quota-vless "https://raw.githubusercontent.com/huutvpn/jp/main/limit/limit-quota-vless.sh"
+wget -q -O /usr/bin/quota "https://raw.githubusercontent.com/huutvpn/jp/main/limit/quota.sh"
+wget -q -O /usr/bin/quota-trojan-grpc "https://raw.githubusercontent.com/huutvpn/jp/main/limit/quota-trojan-grpc.sh"
+wget -q -O /usr/bin/quota-trojan-ws "https://raw.githubusercontent.com/huutvpn/jp/main/limit/quota-trojan-ws.sh"
+wget -q -O /usr/bin/quota-vmess-grpc "https://raw.githubusercontent.com/huutvpn/jp/main/limit/quota-vmess-grpc.sh"
+wget -q -O /usr/bin/quota-vmess-ws "https://raw.githubusercontent.com/huutvpn/jp/main/limit/quota-vmess-ws.sh"
+wget -q -O /usr/bin/quota-vless-ws "https://raw.githubusercontent.com/huutvpn/jp/main/limit/quota-vless-ws.sh"
+wget -q -O /usr/bin/quota-vless-grpc "https://raw.githubusercontent.com/huutvpn/jp/main/limit/quota-vless-grpc.sh"
+wget -q -O /usr/bin/quota-vmess-orbit "https://raw.githubusercontent.com/huutvpn/jp/main/limit/quota-vmess-ws-orbit.sh"
+wget -q -O /usr/bin/quota-vmess-orbit1 "https://raw.githubusercontent.com/huutvpn/jp/main/limit/quota-vmess-ws-orbit1.sh"
 chmod +x /usr/bin/*
 cd 
 chmod +x /usr/bin/clearlog
@@ -378,7 +378,7 @@ if [ ! -f "/etc/log-create-user.log" ]; then
 echo "Log All Account " > /etc/log-create-user.log
 fi
 history -c
-serverV=$( curl -sS https://raw.githubusercontent.com/huutvpn/instalasi/main/version  )
+serverV=$( curl -sS https://raw.githubusercontent.com/huutvpn/jp/main/version  )
 echo $serverV > /opt/.ver
 aureb=$(cat /home/re_otm)
 b=11
