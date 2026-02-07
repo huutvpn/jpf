@@ -22,7 +22,7 @@ echo -e "\e[32mloading...\e[0m"
 clear
 IP=$(wget -qO- icanhazip.com)
 dateToday=$(date +"%Y-%m-%d")
-USRSC=$(curl -sS https://https://raw.githubusercontent.com/huutvpn/instalasi/main/register | grep $MYIP | awk '{print $2}')
+USRSC=$(curl -sS https://https://raw.githubusercontent.com/huutvpn/jp/main/register | grep $MYIP | awk '{print $2}')
 
 setup_bot() {
     switch=$(grep -i "switch" /root/.bckupbot | awk '{print $2}')
