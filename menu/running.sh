@@ -1,10 +1,3 @@
-ENV_FILE="/etc/zipvpn/.env"
-if [ ! -f "$ENV_FILE" ]; then
-  echo "Token belum diset. Jalankan install.sh"
-  exit 1
-fi
-export $(grep -v '^#' $ENV_FILE | xargs)
-
 #!/bin/bash
 GREEN='\033[0;32m'
 PURPLE='\033[0;35m'
@@ -61,9 +54,9 @@ CITY=$( curl -s ipinfo.io/city )
 #clear
 
 # CHEK STATUS 
-openvpn_service="$(systemctl show openvpn.service --no-page)"
-oovpn=$(echo "${openvpn_service}" | grep 'ActiveState=' | cut -f2 -d=)
-status_openvp=$(/etc/init.d/openvpn status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+jpvpn_service="$(systemctl show jpvpn.service --no-page)"
+oovpn=$(echo "${jpvpn_service}" | grep 'ActiveState=' | cut -f2 -d=)
+status_jpvp=$(/etc/init.d/jpvpn status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 #status_ss_tls="$(systemctl show shadowsocks-libev-server@tls.service --no-page)"
 #ss_tls=$(echo "${status_ss_tls}" | grep 'ActiveState=' | cut -f2 -d=)
 #sst_status=$(systemctl status shadowsocks-libev-server@tls | grep Active | awk '{print $0}' | cut -d "(" -f2 | cut -d ")" -f1) 
@@ -96,10 +89,10 @@ wstls=$(systemctl status ws-stunnel.service | grep Active | awk '{print $3}' | c
 wsdrop=$(systemctl status ws-dropbear.service | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 udp1=$(systemctl status udp | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 #wsovpn=$(systemctl status ws-ovpn | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-#wsopen=$(systemctl status ws-openssh | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+#wsjp=$(systemctl status ws-jpssh | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 #osslh=$(systemctl status sslh | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 #ohp=$(systemctl status dropbear-ohp | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-#ohq=$(systemctl status openvpn-ohp | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+#ohq=$(systemctl status jpvpn-ohp | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 #ohr=$(systemctl status ssh-ohp | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 
 # COLOR VALIDATION
@@ -122,9 +115,9 @@ fi
 
 # STATUS SERVICE OPENVPN
 if [[ $oovpn == "active" ]]; then
-  status_openvpn=" ${GREEN}Running ${NC}( No Error )"
+  status_jpvpn=" ${GREEN}Running ${NC}( No Error )"
 else
-  status_openvpn="${RED}  Not Running ${NC}  ( Error )"
+  status_jpvpn="${RED}  Not Running ${NC}  ( Error )"
 fi
 
 # STATUS SERVICE  SSH 
@@ -283,7 +276,7 @@ echo -e "\E[44;1;39m            ⇱ Service Information ⇲             \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "❇️ SSH / TUN               :$status_ssh"
 echo -e "❇️ SSH UDP                 :$udp"
-echo -e "❇️ OpenVPN                 :$status_openvpn"
+echo -e "❇️ OpenVPN                 :$status_jpvpn"
 echo -e "❇️ Dropbear                :$status_beruangjatuh"
 echo -e "❇️ Stunnel4                :$status_stunnel"
 echo -e "❇️ Squid                   :$status_squid"

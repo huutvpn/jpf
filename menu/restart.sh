@@ -1,10 +1,3 @@
-ENV_FILE="/etc/zipvpn/.env"
-if [ ! -f "$ENV_FILE" ]; then
-  echo "Token belum diset. Jalankan install.sh"
-  exit 1
-fi
-export $(grep -v '^#' $ENV_FILE | xargs)
-
 #!/bin/bash
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
@@ -48,7 +41,7 @@ case $Restart in
                 /etc/init.d/ssh restart
                 /etc/init.d/dropbear restart
                 /etc/init.d/stunnel4 restart
-                /etc/init.d/openvpn restart
+                /etc/init.d/jpvpn restart
                 /etc/init.d/fail2ban restart
                 /etc/init.d/cron restart
                 /etc/init.d/nginx restart
@@ -137,7 +130,7 @@ case $Restart in
                 echo -e ""
                 echo -e "[ \033[32mInfo\033[0m ] Restart Begin"
                 sleep 1
-                /etc/init.d/openvpn restart
+                /etc/init.d/jpvpn restart
                 sleep 0.5
                 echo -e "[ \033[32mInfo\033[0m ] Openvpn Service Restarted"
                 echo ""
