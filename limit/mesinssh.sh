@@ -54,22 +54,22 @@ do
                 echo "$PID - $USER - $IP";
         fi
 done
-if [ -f "/etc/jpvpn/server/jpvpn-tcp.log" ]; then
+if [ -f "/etc/openvpn/server/openvpn-tcp.log" ]; then
 echo ""
 echo "---------=[ OpenVPN TCP User Login ]=---------";
 echo "Username  |  IP Address  |  Connected";
 echo "----------------------------------------------";
-        cat /etc/jpvpn/server/jpvpn-tcp.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' > /tmp/vpn-login-tcp.txt
+        cat /etc/openvpn/server/openvpn-tcp.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' > /tmp/vpn-login-tcp.txt
         cat /tmp/vpn-login-tcp.txt
 fi
 echo "----------------------------------------------";
 
-if [ -f "/etc/jpvpn/server/jpvpn-udp.log" ]; then
+if [ -f "/etc/openvpn/server/openvpn-udp.log" ]; then
 echo " "
 echo "---------=[ OpenVPN UDP User Login ]=---------";
 echo "Username  |  IP Address  |  Connected";
 echo "----------------------------------------------";
-        cat /etc/jpvpn/server/jpvpn-udp.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' > /tmp/vpn-login-udp.txt
+        cat /etc/openvpn/server/openvpn-udp.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' > /tmp/vpn-login-udp.txt
         cat /tmp/vpn-login-udp.txt
 fi
 echo "----------------------------------------------";
