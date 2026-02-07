@@ -1,4 +1,5 @@
-
+#!/bin/bash
+# Script Mod by ADAM SIJA
 #!/bin/bash
 clear
 MAX=1
