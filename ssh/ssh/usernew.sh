@@ -1,3 +1,10 @@
+ENV_FILE="/etc/zipvpn/.env"
+if [ ! -f "$ENV_FILE" ]; then
+  echo "Token belum diset. Jalankan install.sh"
+  exit 1
+fi
+export $(grep -v '^#' $ENV_FILE | xargs)
+
 #!/bin/bash
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
@@ -7,7 +14,7 @@ clear
 export CHATID=""
 export KEY="6459313510:AAEFcfZppWzJWaMywzJpi6mGeimsR38b-kI"
 export TIME="10"
-export URL="https://api.telegram.org/bot$KEY/sendMessage"
+export URL="https://api.huutvpn
 clear
 sldomain=$(cat /root/nsdomain)
 cdndomain=$(cat /root/awscdndomain)

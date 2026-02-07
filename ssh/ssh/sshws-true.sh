@@ -1,3 +1,10 @@
+ENV_FILE="/etc/zipvpn/.env"
+if [ ! -f "$ENV_FILE" ]; then
+  echo "Token belum diset. Jalankan install.sh"
+  exit 1
+fi
+export $(grep -v '^#' $ENV_FILE | xargs)
+
 #!/bin/bash
 
 portdb=`cat /root/log-install.txt | grep -w "Dropbear" | cut -d: -f2|sed 's/ //g' | cut -f2 -d","`

@@ -1,3 +1,10 @@
+ENV_FILE="/etc/zipvpn/.env"
+if [ ! -f "$ENV_FILE" ]; then
+  echo "Token belum diset. Jalankan install.sh"
+  exit 1
+fi
+export $(grep -v '^#' $ENV_FILE | xargs)
+
 export DEBIAN_FRONTEND=noninteractive
 MYIP=$(wget -qO- ipinfo.io/ip);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
